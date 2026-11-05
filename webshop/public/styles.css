@@ -211,6 +211,9 @@ input, select, textarea {
   font: inherit; padding: 10px; border-radius: 8px;
   border: 1px solid var(--line); background: var(--bg); color: var(--text);
 }
+input, textarea { width: 100%; min-width: 0; }
+.checkout > *, form .two > * { min-width: 0; }
+@media (max-width: 400px) { form .two { grid-template-columns: 96px 1fr; } }
 input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin: 0 0 12px; }
 fieldset label { font-weight: 400; display: flex; gap: 8px; align-items: center; margin: 4px 0; }
