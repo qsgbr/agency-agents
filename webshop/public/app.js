@@ -32,35 +32,14 @@ function totals() {
 }
 
 // ---------- Rendering ----------
-const COLORS = { Nassbohrkronen: '#4a4a4a', Trockenbohrkronen: '#f07800', Dosensenker: '#8c8c8c', 'Zubehör': '#5a5a5a' };
 let diameterQuery = '';
 
-// Zeichnet eine einfache Bohrkrone (oder ein Zubehörteil) als SVG.
-function drawing(p) {
-  const color = COLORS[p.category] || '#555';
-  const d = p.specs.durchmesser || 40;
-  if (p.category === 'Zubehör') {
-    return `<svg viewBox="0 0 200 120" role="img" aria-label="${esc(p.name)}">
-      <rect x="40" y="48" width="120" height="24" rx="4" fill="${color}"/>
-      <rect x="20" y="52" width="24" height="16" rx="2" fill="#9a958d"/>
-      <rect x="156" y="52" width="24" height="16" rx="2" fill="#9a958d"/>
-      ${Array.from({ length: 6 }, (_, i) => `<line x1="${24 + i * 3}" y1="52" x2="${24 + i * 3}" y2="68" stroke="#fff" stroke-opacity=".5"/>`).join('')}
-    </svg>`;
-  }
-  const w = 40 + Math.min(d, 202) * 0.55; // Breite skaliert mit Ø
-  const x = (200 - w) / 2;
-  const segs = p.specs.segmente || 6;
-  const segW = w / segs;
-  const segments = Array.from({ length: segs }, (_, i) =>
-    `<rect x="${x + i * segW + 1}" y="92" width="${segW - 3}" height="12" rx="1.5" fill="#2b2b2b"/>`).join('');
-  return `<svg viewBox="0 0 200 120" role="img" aria-label="${esc(p.name)}">
-    <rect x="92" y="4" width="16" height="16" rx="2" fill="#9a958d"/>
-    <rect x="${x}" y="20" width="${w}" height="10" rx="3" fill="#8a857d"/>
-    <rect x="${x}" y="28" width="${w}" height="66" fill="${color}"/>
-    <rect x="${x}" y="28" width="${w * 0.18}" height="66" fill="#fff" fill-opacity=".18"/>
-    ${segments}
-    <text x="100" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ø ${p.specs.durchmesser || ''}</text>
-  </svg>`;
+// Solange kein echtes Produktfoto hinterlegt ist, erscheint ein neutraler Platzhalter.
+function photoPlaceholder() {
+  return `<div class="photo-placeholder" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="40" height="40"><path fill="currentColor" d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+    <span>Produktfoto folgt</span>
+  </div>`;
 }
 
 function specRows(s) {
@@ -68,6 +47,8 @@ function specRows(s) {
     ['Ø', s.durchmesser && `${s.durchmesser} mm`],
     ['Nutzlänge', s.nutzlaenge && `${s.nutzlaenge} mm`],
     ['Anschluss', s.anschluss],
+    ['Bohrung', s.bohrung],
+    ['Maschine', s.maschine],
     ['Kühlung', s.kuehlung],
     ['Für', s.anwendung],
   ].filter((r) => r[1]);
@@ -91,7 +72,7 @@ function renderProducts() {
       .sort((a, b) => Math.abs(a.specs.durchmesser - q) - Math.abs(b.specs.durchmesser - q));
   }
   $('resultInfo').textContent = q > 0
-    ? (list.length ? `${list.length} Bohrkrone(n) passend zu Ø ${q} mm` : `Keine Bohrkrone um Ø ${q} mm gefunden – sprich uns für Sondergrößen an.`)
+    ? (list.length ? `${list.length} Artikel passend zu Ø ${q} mm` : `Nichts um Ø ${q} mm gefunden – sprich uns für Sondergrößen an.`)
     : '';
   $('products').innerHTML = list
     .map((p) => {
@@ -99,7 +80,8 @@ function renderProducts() {
       const left = p.stock - inCart;
       return `
       <article class="card">
-        <div class="drawing">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" width="800" height="800">` : drawing(p)}</div>
+        <div class="drawing">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">` : photoPlaceholder()}</div>
+        ${p.imageCredit ? `<small class="credit">Foto: ${esc(p.imageCredit)}</small>` : ''}
         <span class="tag">${esc(p.category)}</span>
         <h3>${esc(p.name)}</h3>
         <p>${esc(p.description)}</p>

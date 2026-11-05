@@ -3,7 +3,7 @@
 Online-Shop der **IMERAJ Betonbohren & Sägen GmbH** (Otto-Lilienthal-Str. 2, 88046 Friedrichshafen).
 Der Betrieb bohrt und sägt selbst Beton und verkauft zusätzlich die Bohrkronen, mit denen er arbeitet.
 
-Online-Shop für Diamant-Nassbohrkronen, Trockenbohrkronen, Dosensenker und Zubehör:
+Online-Shop für Diamant-Nassbohrkronen, Diamant-Sägeblätter, Dosensenker und Zubehör:
 Produkte mit technischen Daten ansehen, nach Durchmesser suchen, bestellen –
 und im Admin-Bereich die Bestellungen bearbeiten und **fertigstellen**.
 Keine externen Abhängigkeiten, nur Node.js (ab Version 18).
@@ -21,7 +21,7 @@ ADMIN_TOKEN=mein-passwort npm start
 ## Funktionen
 
 **Für Kunden**
-- Produktübersicht mit Kategorien (Nassbohrkronen, Trockenbohrkronen, Dosensenker, Zubehör)
+- Produktübersicht mit Kategorien (Nassbohrkronen, Sägeblätter, Dosensenker, Zubehör)
 - Technische Daten je Artikel: Ø, Nutzlänge, Anschluss (1¼" UNC, M16, SDS-plus), Kühlung, Material
 - Suche nach Durchmesser (zeigt passende Kronen ± 10 mm, nächstgelegene zuerst)
 - Produktzeichnung, die mit dem Durchmesser mitwächst
@@ -47,13 +47,14 @@ ADMIN_TOKEN=mein-passwort npm start
 ## Anpassen
 
 - **Logo und Foto:** `public/logo.png` und `public/hero.jpg` (beide aus dem Firmen-Flyer übernommen)
-- **Produktbilder:** `public/img/products/<id>.jpg`. Das sind gerenderte Illustrationen aus
-  `tools/render_products.py` (neu erzeugen mit `python3 tools/render_products.py`). Echte Fotos
-  einfach unter gleichem Dateinamen ablegen.
+- **Produktbilder:** Foto nach `public/img/products/` legen und beim Artikel in `data/products.json`
+  `"image": "/img/products/<datei>.jpg"` eintragen. Bei fremden, frei lizenzierten Fotos zusätzlich
+  `"imageCredit": "Name / Lizenz"` angeben, das wird dann unter dem Bild angezeigt.
+  Ohne Foto zeigt der Shop den Platzhalter „Produktfoto folgt“.
 - **Kontaktdaten:** stehen im Fußbereich von `public/index.html`
 
 - **Produkte:** `data/products.json` bearbeiten (Name, Beschreibung, Preis, Kategorie, Bestand und `specs` mit
-  `durchmesser`, `nutzlaenge`, `anschluss`, `anwendung`, `kuehlung`, `segmente`)
+  `durchmesser`, `nutzlaenge`, `anschluss`, `bohrung`, `maschine`, `anwendung`, `kuehlung`, `segmente`)
 - **Versandkosten:** `SHIPPING_FEE` / `FREE_SHIPPING_FROM` in `server.js` und `public/app.js`
 - **Bestellungen** werden in `data/orders.json` gespeichert (Ordner per `DATA_DIR` änderbar)
 - **Port:** `PORT=8080 npm start`

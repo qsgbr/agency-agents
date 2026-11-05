@@ -110,6 +110,13 @@ test('Stornieren bucht Bestand zurück', async () => {
   assert.equal(await stock(), s0);
 });
 
+test('Sortiment: Sägeblätter statt Trockenbohrkronen', async () => {
+  const products = await (await fetch(base + '/api/products')).json();
+  const cats = new Set(products.map((p) => p.category));
+  assert.ok(cats.has('Sägeblätter'));
+  assert.ok(!cats.has('Trockenbohrkronen'));
+});
+
 test('Impressum ist erreichbar', async () => {
   const res = await fetch(base + '/impressum');
   assert.equal(res.status, 200);

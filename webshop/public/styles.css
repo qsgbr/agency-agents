@@ -251,3 +251,10 @@ header.top a.btn { background: #fff; color: #141414; border-color: #d6d6d6; }
 .legal p { margin: 0; }
 .legal a { color: var(--accent); }
 .legal mark { background: #fde68a; color: #141414; padding: 0 4px; }
+
+.photo-placeholder {
+  aspect-ratio: 4 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  color: var(--muted); font-size: .85rem; font-weight: 600; border: 2px dashed var(--line); border-radius: 8px;
+}
+.card .drawing .photo-placeholder svg { width: 36px; height: 36px; opacity: .6; }
+.credit { display: block; margin: -6px 0 8px; font-size: .7rem; color: var(--muted); }
