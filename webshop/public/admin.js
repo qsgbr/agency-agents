@@ -1,6 +1,6 @@
 'use strict';
 
-const TOKEN_KEY = 'kronenwerk-admin';
+const TOKEN_KEY = 'imeraj-admin';
 const LABELS = { neu: 'Neu', in_bearbeitung: 'In Bearbeitung', versendet: 'Versendet', fertig: 'Fertig', storniert: 'Storniert' };
 const PAYMENT = { rechnung: 'Rechnung', vorkasse: 'Vorkasse', paypal: 'PayPal', nachnahme: 'Nachnahme' };
 

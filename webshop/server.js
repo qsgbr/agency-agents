@@ -1,4 +1,4 @@
-// KronenWerk – Webshop-Server für Bohrkronen ohne externe Abhängigkeiten (Node.js >= 18).
+// Imeraj Bohrkronen – Webshop-Server ohne externe Abhängigkeiten (Node.js >= 18).
 // Start: node server.js   →   http://localhost:3000
 'use strict';
 
@@ -25,6 +25,8 @@ const MIME = {
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
   '.ico': 'image/x-icon',
 };
 
@@ -294,7 +296,7 @@ function createServer() {
 
 if (require.main === module) {
   createServer().listen(PORT, () => {
-    console.log(`Webshop läuft auf http://localhost:${PORT}`);
+    console.log(`Imeraj Bohrkronen läuft auf http://localhost:${PORT}`);
     console.log(`Admin-Bereich:   http://localhost:${PORT}/admin`);
     if (!process.env.ADMIN_TOKEN) console.warn('Hinweis: Standard-Admin-Passwort "admin" aktiv – bitte ADMIN_TOKEN setzen.');
   });

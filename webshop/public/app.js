@@ -2,7 +2,7 @@
 
 const SHIPPING_FEE = 6.9;
 const FREE_SHIPPING_FROM = 150;
-const CART_KEY = 'kronenwerk-cart';
+const CART_KEY = 'imeraj-cart';
 
 const $ = (id) => document.getElementById(id);
 const eur = (n) => n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
@@ -32,7 +32,7 @@ function totals() {
 }
 
 // ---------- Rendering ----------
-const COLORS = { Nassbohrkronen: '#3b6ea5', Trockenbohrkronen: '#b5651d', Dosensenker: '#5a7d2a', 'Zubehör': '#6b665f' };
+const COLORS = { Nassbohrkronen: '#4a4a4a', Trockenbohrkronen: '#f07800', Dosensenker: '#8c8c8c', 'Zubehör': '#5a5a5a' };
 let diameterQuery = '';
 
 // Zeichnet eine einfache Bohrkrone (oder ein Zubehörteil) als SVG.

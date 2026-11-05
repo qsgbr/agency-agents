@@ -1,4 +1,7 @@
-# ◎ KronenWerk – Webshop für Bohrkronen
+# Imeraj Bohrkronen – Webshop
+
+Online-Shop der **IMERAJ Betonbohren & Sägen GmbH** (Otto-Lilienthal-Str. 2, 88046 Friedrichshafen).
+Der Betrieb bohrt und sägt selbst Beton und verkauft zusätzlich die Bohrkronen, mit denen er arbeitet.
 
 Online-Shop für Diamant-Nassbohrkronen, Trockenbohrkronen, Dosensenker und Zubehör:
 Produkte mit technischen Daten ansehen, nach Durchmesser suchen, bestellen –
@@ -42,6 +45,9 @@ ADMIN_TOKEN=mein-passwort npm start
 - Die öffentliche Bestellabfrage zeigt keine Adress- oder E-Mail-Daten
 
 ## Anpassen
+
+- **Logo und Foto:** `public/logo.png` und `public/hero.jpg` (beide aus dem Firmen-Flyer übernommen)
+- **Kontaktdaten:** stehen im Fußbereich von `public/index.html`
 
 - **Produkte:** `data/products.json` bearbeiten (Name, Beschreibung, Preis, Kategorie, Bestand und `specs` mit
   `durchmesser`, `nutzlaenge`, `anschluss`, `anwendung`, `kuehlung`, `segmente`)
