@@ -110,6 +110,12 @@ test('Stornieren bucht Bestand zurück', async () => {
   assert.equal(await stock(), s0);
 });
 
+test('Impressum ist erreichbar', async () => {
+  const res = await fetch(base + '/impressum');
+  assert.equal(res.status, 200);
+  assert.match(await res.text(), /HRB 742117/);
+});
+
 test('Pfad-Traversal wird verhindert', async () => {
   const res = await fetch(base + '/..%2Fserver.js');
   assert.notEqual(res.status, 200);
