@@ -1,0 +1,10 @@
+[
+  { "id": "p1", "name": "Bio-Kaffee „Morgenrot“", "description": "500 g ganze Bohnen, fair gehandelt, mittlere Röstung.", "price": 12.90, "category": "Lebensmittel", "emoji": "☕", "stock": 40 },
+  { "id": "p2", "name": "Keramik-Tasse", "description": "Handgemacht, 300 ml, spülmaschinenfest.", "price": 18.50, "category": "Küche", "emoji": "🍵", "stock": 25 },
+  { "id": "p3", "name": "Leinen-Geschirrtuch (2er-Set)", "description": "100 % Leinen, 50 × 70 cm.", "price": 14.00, "category": "Küche", "emoji": "🧺", "stock": 60 },
+  { "id": "p4", "name": "Notizbuch A5", "description": "Gepunktet, 192 Seiten, Fadenbindung.", "price": 9.90, "category": "Schreibwaren", "emoji": "📓", "stock": 80 },
+  { "id": "p5", "name": "Füllfederhalter", "description": "Edelstahlfeder M, inkl. Konverter.", "price": 34.00, "category": "Schreibwaren", "emoji": "🖋️", "stock": 15 },
+  { "id": "p6", "name": "Duftkerze Lavendel", "description": "Sojawachs, ca. 40 Stunden Brenndauer.", "price": 16.90, "category": "Wohnen", "emoji": "🕯️", "stock": 30 },
+  { "id": "p7", "name": "Wollplaid", "description": "130 × 170 cm, Merinowolle, Anthrazit.", "price": 79.00, "category": "Wohnen", "emoji": "🧣", "stock": 8 },
+  { "id": "p8", "name": "Honig aus der Region", "description": "Blütenhonig, 500 g Glas.", "price": 8.40, "category": "Lebensmittel", "emoji": "🍯", "stock": 50 }
+]

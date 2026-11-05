@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ladenzeile – Webshop</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="logo" href="/">🛍️ Ladenzeile</a>
+      <button class="cart-btn" id="openCart" aria-label="Warenkorb öffnen">🛒 Warenkorb <span class="badge" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Produktübersicht -->
+    <section id="shopView">
+      <h1>Unsere Produkte</h1>
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="products"><p class="hint">Produkte werden geladen …</p></div>
+    </section>
+
+    <!-- Kasse -->
+    <section id="checkoutView" class="hidden">
+      <p><button id="backToShop">← Weiter einkaufen</button></p>
+      <h1>Kasse</h1>
+      <div class="checkout">
+        <form id="checkoutForm" novalidate>
+          <div class="errors hidden" id="formErrors"></div>
+          <div class="field"><label for="name">Vollständiger Name</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="email">E-Mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="street">Straße und Hausnummer</label><input id="street" name="street" autocomplete="street-address" required></div>
+          <div class="two">
+            <div class="field"><label for="zip">PLZ</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required></div>
+            <div class="field"><label for="city">Ort</label><input id="city" name="city" autocomplete="address-level2" required></div>
+          </div>
+          <fieldset>
+            <legend>Zahlungsart</legend>
+            <label><input type="radio" name="payment" value="rechnung" checked> Rechnung</label>
+            <label><input type="radio" name="payment" value="vorkasse"> Vorkasse (Überweisung)</label>
+            <label><input type="radio" name="payment" value="paypal"> PayPal</label>
+            <label><input type="radio" name="payment" value="nachnahme"> Nachnahme</label>
+          </fieldset>
+          <div class="field"><label for="note">Anmerkung (optional)</label><textarea id="note" name="note" rows="3"></textarea></div>
+          <button type="submit" class="primary" id="placeOrder" style="width:100%;padding:12px">Zahlungspflichtig bestellen</button>
+        </form>
+        <aside class="card">
+          <h2 style="margin-top:0">Deine Bestellung</h2>
+          <div id="checkoutLines"></div>
+          <div class="totals" id="checkoutTotals"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Bestätigung -->
+    <section id="successView" class="hidden">
+      <div class="success card">
+        <div class="big">✅</div>
+        <h1>Vielen Dank für deine Bestellung!</h1>
+        <p>Deine Bestellnummer: <strong id="orderId"></strong></p>
+        <p id="orderSummary" class="hint"></p>
+        <p><button class="primary" id="newOrder">Zurück zum Shop</button></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Warenkorb -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <aside class="drawer" id="drawer" aria-label="Warenkorb">
+    <header><h2>Warenkorb</h2><button id="closeCart" aria-label="Schließen">✕</button></header>
+    <div class="body" id="cartLines"></div>
+    <footer>
+      <div class="totals" id="cartTotals"></div>
+      <button class="primary" id="toCheckout" style="width:100%;margin-top:12px;padding:12px">Zur Kasse</button>
+    </footer>
+  </aside>
+
+  <script src="/app.js"></script>
+</body>
+</html>
