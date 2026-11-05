@@ -1,6 +1,7 @@
-# 🛍️ Ladenzeile – Webshop
+# ◎ KronenWerk – Webshop für Bohrkronen
 
-Ein vollständiger, kleiner Webshop: Produkte ansehen, in den Warenkorb legen, bestellen –
+Online-Shop für Diamant-Nassbohrkronen, Trockenbohrkronen, Dosensenker und Zubehör:
+Produkte mit technischen Daten ansehen, nach Durchmesser suchen, bestellen –
 und im Admin-Bereich die Bestellungen bearbeiten und **fertigstellen**.
 Keine externen Abhängigkeiten, nur Node.js (ab Version 18).
 
@@ -17,10 +18,13 @@ ADMIN_TOKEN=mein-passwort npm start
 ## Funktionen
 
 **Für Kunden**
-- Produktübersicht mit Kategorien-Filter und Lagerbestand
+- Produktübersicht mit Kategorien (Nassbohrkronen, Trockenbohrkronen, Dosensenker, Zubehör)
+- Technische Daten je Artikel: Ø, Nutzlänge, Anschluss (1¼" UNC, M16, SDS-plus), Kühlung, Material
+- Suche nach Durchmesser (zeigt passende Kronen ± 10 mm, nächstgelegene zuerst)
+- Produktzeichnung, die mit dem Durchmesser mitwächst
 - Warenkorb (bleibt im Browser gespeichert), Mengen ändern, entfernen
-- Kasse mit Adresse, Zahlungsart (Rechnung, Vorkasse, PayPal, Nachnahme) und Anmerkung
-- Versand 4,90 €, ab 50 € kostenlos
+- Kasse mit Firma und USt-IdNr. (optional, für Gewerbekunden), Adresse, Zahlungsart (Rechnung, Vorkasse, PayPal, Nachnahme) und Anmerkung
+- Versand 6,90 €, ab 150 € kostenlos
 - Bestellbestätigung mit Bestellnummer
 
 **Für den Shop-Betreiber (`/admin`)**
@@ -39,7 +43,9 @@ ADMIN_TOKEN=mein-passwort npm start
 
 ## Anpassen
 
-- **Produkte:** `data/products.json` bearbeiten (Name, Beschreibung, Preis, Kategorie, Emoji, Bestand)
+- **Produkte:** `data/products.json` bearbeiten (Name, Beschreibung, Preis, Kategorie, Bestand und `specs` mit
+  `durchmesser`, `nutzlaenge`, `anschluss`, `anwendung`, `kuehlung`, `segmente`)
+- **Versandkosten:** `SHIPPING_FEE` / `FREE_SHIPPING_FROM` in `server.js` und `public/app.js`
 - **Bestellungen** werden in `data/orders.json` gespeichert (Ordner per `DATA_DIR` änderbar)
 - **Port:** `PORT=8080 npm start`
 

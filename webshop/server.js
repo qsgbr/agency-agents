@@ -1,4 +1,4 @@
-// Einfacher Webshop-Server ohne externe Abhängigkeiten (Node.js >= 18).
+// KronenWerk – Webshop-Server für Bohrkronen ohne externe Abhängigkeiten (Node.js >= 18).
 // Start: node server.js   →   http://localhost:3000
 'use strict';
 
@@ -14,8 +14,8 @@ const PUBLIC_DIR = path.join(__dirname, 'public');
 const PRODUCTS_FILE = path.join(__dirname, 'data', 'products.json');
 const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
 
-const SHIPPING_FEE = 4.9;
-const FREE_SHIPPING_FROM = 50;
+const SHIPPING_FEE = 6.9;
+const FREE_SHIPPING_FROM = 150;
 const STATUSES = ['neu', 'in_bearbeitung', 'versendet', 'fertig', 'storniert'];
 const PAYMENTS = ['rechnung', 'vorkasse', 'paypal', 'nachnahme'];
 
@@ -101,6 +101,8 @@ function validateOrder(body) {
   const errors = [];
   const c = body.customer || {};
   const customer = {
+    company: str(c.company, 150),
+    vatId: str(c.vatId, 30).replace(/\s/g, '').toUpperCase(),
     name: str(c.name, 100),
     email: str(c.email, 150),
     street: str(c.street, 150),
@@ -108,6 +110,8 @@ function validateOrder(body) {
     city: str(c.city, 100),
     note: str(c.note, 500),
   };
+  if (customer.vatId && !/^[A-Z]{2}[0-9A-Z]{2,13}$/.test(customer.vatId))
+    errors.push('Die USt-IdNr. ist ungültig (z. B. DE123456789).');
   if (customer.name.length < 2) errors.push('Bitte einen Namen angeben.');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) errors.push('Bitte eine gültige E-Mail-Adresse angeben.');
   if (customer.street.length < 3) errors.push('Bitte Straße und Hausnummer angeben.');

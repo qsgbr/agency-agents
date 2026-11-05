@@ -1,8 +1,8 @@
 'use strict';
 
-const SHIPPING_FEE = 4.9;
-const FREE_SHIPPING_FROM = 50;
-const CART_KEY = 'ladenzeile-cart';
+const SHIPPING_FEE = 6.9;
+const FREE_SHIPPING_FROM = 150;
+const CART_KEY = 'kronenwerk-cart';
 
 const $ = (id) => document.getElementById(id);
 const eur = (n) => n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
@@ -32,6 +32,48 @@ function totals() {
 }
 
 // ---------- Rendering ----------
+const COLORS = { Nassbohrkronen: '#3b6ea5', Trockenbohrkronen: '#b5651d', Dosensenker: '#5a7d2a', 'Zubehör': '#6b665f' };
+let diameterQuery = '';
+
+// Zeichnet eine einfache Bohrkrone (oder ein Zubehörteil) als SVG.
+function drawing(p) {
+  const color = COLORS[p.category] || '#555';
+  const d = p.specs.durchmesser || 40;
+  if (p.category === 'Zubehör') {
+    return `<svg viewBox="0 0 200 120" role="img" aria-label="${esc(p.name)}">
+      <rect x="40" y="48" width="120" height="24" rx="4" fill="${color}"/>
+      <rect x="20" y="52" width="24" height="16" rx="2" fill="#9a958d"/>
+      <rect x="156" y="52" width="24" height="16" rx="2" fill="#9a958d"/>
+      ${Array.from({ length: 6 }, (_, i) => `<line x1="${24 + i * 3}" y1="52" x2="${24 + i * 3}" y2="68" stroke="#fff" stroke-opacity=".5"/>`).join('')}
+    </svg>`;
+  }
+  const w = 40 + Math.min(d, 202) * 0.55; // Breite skaliert mit Ø
+  const x = (200 - w) / 2;
+  const segs = p.specs.segmente || 6;
+  const segW = w / segs;
+  const segments = Array.from({ length: segs }, (_, i) =>
+    `<rect x="${x + i * segW + 1}" y="92" width="${segW - 3}" height="12" rx="1.5" fill="#2b2b2b"/>`).join('');
+  return `<svg viewBox="0 0 200 120" role="img" aria-label="${esc(p.name)}">
+    <rect x="92" y="4" width="16" height="16" rx="2" fill="#9a958d"/>
+    <rect x="${x}" y="20" width="${w}" height="10" rx="3" fill="#8a857d"/>
+    <rect x="${x}" y="28" width="${w}" height="66" fill="${color}"/>
+    <rect x="${x}" y="28" width="${w * 0.18}" height="66" fill="#fff" fill-opacity=".18"/>
+    ${segments}
+    <text x="100" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ø ${p.specs.durchmesser || ''}</text>
+  </svg>`;
+}
+
+function specRows(s) {
+  const rows = [
+    ['Ø', s.durchmesser && `${s.durchmesser} mm`],
+    ['Nutzlänge', s.nutzlaenge && `${s.nutzlaenge} mm`],
+    ['Anschluss', s.anschluss],
+    ['Kühlung', s.kuehlung],
+    ['Für', s.anwendung],
+  ].filter((r) => r[1]);
+  return `<dl class="specs">${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
+}
+
 function renderFilters() {
   const cats = ['Alle', ...new Set(products.map((p) => p.category))];
   $('filters').innerHTML = cats
@@ -40,19 +82,31 @@ function renderFilters() {
 }
 
 function renderProducts() {
-  const list = products.filter((p) => category === 'Alle' || p.category === category);
+  const q = Number(diameterQuery);
+  let list = products.filter((p) => category === 'Alle' || p.category === category);
+  if (q > 0) {
+    // passende Durchmesser (± 10 mm), nächstgelegene zuerst
+    list = list
+      .filter((p) => p.specs.durchmesser && p.category !== 'Zubehör' && Math.abs(p.specs.durchmesser - q) <= 10)
+      .sort((a, b) => Math.abs(a.specs.durchmesser - q) - Math.abs(b.specs.durchmesser - q));
+  }
+  $('resultInfo').textContent = q > 0
+    ? (list.length ? `${list.length} Bohrkrone(n) passend zu Ø ${q} mm` : `Keine Bohrkrone um Ø ${q} mm gefunden – sprich uns für Sondergrößen an.`)
+    : '';
   $('products').innerHTML = list
     .map((p) => {
       const inCart = cart[p.id] || 0;
       const left = p.stock - inCart;
       return `
       <article class="card">
-        <div class="emoji" aria-hidden="true">${p.emoji}</div>
+        <div class="drawing">${drawing(p)}</div>
+        <span class="tag">${esc(p.category)}</span>
         <h3>${esc(p.name)}</h3>
         <p>${esc(p.description)}</p>
+        ${specRows(p.specs)}
         <div class="row">
           <div><div class="price">${eur(p.price)}</div>
-          <div class="stock">${p.stock > 0 ? `${p.stock} auf Lager` : 'Ausverkauft'}</div></div>
+          <div class="stock">${p.stock > 0 ? (p.stock < 10 ? `Nur noch ${p.stock} auf Lager` : 'Auf Lager') : 'Ausverkauft'}</div></div>
           <button class="primary" data-add="${p.id}" ${left <= 0 ? 'disabled' : ''}>In den Warenkorb</button>
         </div>
       </article>`;
@@ -78,7 +132,7 @@ function renderCart() {
         .map(
           ({ product: p, qty }) => `
       <div class="line">
-        <div class="name">${p.emoji} ${esc(p.name)}</div>
+        <div class="name">${esc(p.name)}</div>
         <div class="sum">${eur(p.price * qty)}</div>
         <div class="qty">
           <button data-dec="${p.id}" aria-label="Weniger">−</button>
@@ -131,6 +185,7 @@ document.addEventListener('click', (e) => {
   else if (t.dataset.remove) { delete cart[t.dataset.remove]; saveCart(); renderCart(); }
 });
 
+$('diameter').addEventListener('input', (e) => { diameterQuery = e.target.value; renderProducts(); });
 $('openCart').onclick = () => openCart(true);
 $('closeCart').onclick = () => openCart(false);
 $('backdrop').onclick = () => openCart(false);
@@ -144,6 +199,7 @@ $('checkoutForm').addEventListener('submit', async (e) => {
   const f = new FormData(e.target);
   const body = {
     customer: {
+      company: f.get('company'), vatId: f.get('vatId'),
       name: f.get('name'), email: f.get('email'), street: f.get('street'),
       zip: f.get('zip'), city: f.get('city'), note: f.get('note'),
     },

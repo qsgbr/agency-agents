@@ -1,6 +1,6 @@
 'use strict';
 
-const TOKEN_KEY = 'ladenzeile-admin';
+const TOKEN_KEY = 'kronenwerk-admin';
 const LABELS = { neu: 'Neu', in_bearbeitung: 'In Bearbeitung', versendet: 'Versendet', fertig: 'Fertig', storniert: 'Storniert' };
 const PAYMENT = { rechnung: 'Rechnung', vorkasse: 'Vorkasse', paypal: 'PayPal', nachnahme: 'Nachnahme' };
 
@@ -50,7 +50,7 @@ function render() {
           const c = o.customer;
           return `<tr>
         <td><strong>${esc(o.id)}</strong><br><span class="hint">${date(o.createdAt)}</span></td>
-        <td>${esc(c.name)}<br><span class="hint">${esc(c.email)}<br>${esc(c.street)}, ${esc(c.zip)} ${esc(c.city)}${c.note ? `<br>„${esc(c.note)}“` : ''}</span></td>
+        <td>${c.company ? `<strong>${esc(c.company)}</strong><br>` : ''}${esc(c.name)}<br><span class="hint">${esc(c.email)}<br>${esc(c.street)}, ${esc(c.zip)} ${esc(c.city)}${c.vatId ? `<br>USt-IdNr.: ${esc(c.vatId)}` : ''}${c.note ? `<br>„${esc(c.note)}“` : ''}</span></td>
         <td>${o.items.map((i) => `${i.qty} × ${esc(i.name)}`).join('<br>')}</td>
         <td><strong>${eur(o.total)}</strong><br><span class="hint">${PAYMENT[o.payment] || esc(o.payment)}</span></td>
         <td><span class="status ${o.status}">${LABELS[o.status]}</span></td>
