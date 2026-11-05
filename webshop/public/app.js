@@ -99,7 +99,7 @@ function renderProducts() {
       const left = p.stock - inCart;
       return `
       <article class="card">
-        <div class="drawing">${drawing(p)}</div>
+        <div class="drawing">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" width="800" height="800">` : drawing(p)}</div>
         <span class="tag">${esc(p.category)}</span>
         <h3>${esc(p.name)}</h3>
         <p>${esc(p.description)}</p>

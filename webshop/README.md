@@ -47,6 +47,9 @@ ADMIN_TOKEN=mein-passwort npm start
 ## Anpassen
 
 - **Logo und Foto:** `public/logo.png` und `public/hero.jpg` (beide aus dem Firmen-Flyer übernommen)
+- **Produktbilder:** `public/img/products/<id>.jpg`. Das sind gerenderte Illustrationen aus
+  `tools/render_products.py` (neu erzeugen mit `python3 tools/render_products.py`). Echte Fotos
+  einfach unter gleichem Dateinamen ablegen.
 - **Kontaktdaten:** stehen im Fußbereich von `public/index.html`
 
 - **Produkte:** `data/products.json` bearbeiten (Name, Beschreibung, Preis, Kategorie, Bestand und `specs` mit
