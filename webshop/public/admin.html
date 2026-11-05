@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KronenWerk – Bestellverwaltung</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">◎</span> KronenWerk · Admin</a>
+      <button id="logout" class="hidden">Abmelden</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="loginView" class="card" style="max-width:380px;margin:40px auto">
+      <h1 style="margin-top:0">Anmelden</h1>
+      <form id="loginForm">
+        <div class="errors hidden" id="loginError">Falsches Passwort.</div>
+        <div class="field"><label for="token">Admin-Passwort</label><input id="token" type="password" autocomplete="current-password" required></div>
+        <button class="primary" style="width:100%">Anmelden</button>
+      </form>
+    </section>
+
+    <section id="adminView" class="hidden">
+      <h1>Bestellungen</h1>
+      <div class="stats" id="stats"></div>
+      <div class="toolbar">
+        <div class="filters" id="statusFilter" style="margin:0"></div>
+        <div style="display:flex;gap:8px">
+          <button id="refresh">↻ Aktualisieren</button>
+          <button class="primary" id="completeAll">✔ Alle offenen fertigstellen</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nr. / Datum</th><th>Kunde</th><th>Artikel</th><th>Summe</th><th>Status</th><th>Aktion</th></tr></thead>
+          <tbody id="orders"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/admin.js"></script>
+</body>
+</html>
