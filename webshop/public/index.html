@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KronenWerk – Bohrkronen online kaufen</title>
+  <meta name="description" content="Diamant-Nassbohrkronen, Trockenbohrkronen, Dosensenker und Zubehör für Kernbohrungen.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">◎</span> KronenWerk</a>
+      <button class="cart-btn" id="openCart" aria-label="Warenkorb öffnen">🛒 Warenkorb <span class="badge" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Produktübersicht -->
+    <section id="shopView">
+      <div class="hero">
+        <h1>Bohrkronen für Profis</h1>
+        <p>Diamant-Nass- und Trockenbohrkronen, Dosensenker und Zubehör für Beton, Stahlbeton und Mauerwerk.</p>
+        <ul class="usp">
+          <li>✔ Versand in 1–2 Werktagen</li>
+          <li>✔ Versandkostenfrei ab 150 €</li>
+          <li>✔ Kauf auf Rechnung für Firmen</li>
+        </ul>
+      </div>
+      <div class="toolbar">
+        <div class="filters" id="filters" style="margin:0"></div>
+        <div class="search">
+          <label for="diameter" class="sr-only">Durchmesser in mm</label>
+          <input id="diameter" type="number" inputmode="numeric" min="1" placeholder="Ø in mm suchen, z. B. 82">
+        </div>
+      </div>
+      <p class="hint" id="resultInfo"></p>
+      <div class="grid" id="products"><p class="hint">Produkte werden geladen …</p></div>
+    </section>
+
+    <!-- Kasse -->
+    <section id="checkoutView" class="hidden">
+      <p><button id="backToShop">← Weiter einkaufen</button></p>
+      <h1>Kasse</h1>
+      <div class="checkout">
+        <form id="checkoutForm" novalidate>
+          <div class="errors hidden" id="formErrors"></div>
+          <div class="field"><label for="company">Firma (optional)</label><input id="company" name="company" autocomplete="organization"></div>
+          <div class="field"><label for="name">Ansprechpartner / Name</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="email">E-Mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="vatId">USt-IdNr. (optional)</label><input id="vatId" name="vatId" placeholder="DE123456789"></div>
+          <div class="field"><label for="street">Straße und Hausnummer</label><input id="street" name="street" autocomplete="street-address" required></div>
+          <div class="two">
+            <div class="field"><label for="zip">PLZ</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required></div>
+            <div class="field"><label for="city">Ort</label><input id="city" name="city" autocomplete="address-level2" required></div>
+          </div>
+          <fieldset>
+            <legend>Zahlungsart</legend>
+            <label><input type="radio" name="payment" value="rechnung" checked> Rechnung</label>
+            <label><input type="radio" name="payment" value="vorkasse"> Vorkasse (Überweisung)</label>
+            <label><input type="radio" name="payment" value="paypal"> PayPal</label>
+            <label><input type="radio" name="payment" value="nachnahme"> Nachnahme</label>
+          </fieldset>
+          <div class="field"><label for="note">Anmerkung, z. B. Baustelle oder Lieferzeit (optional)</label><textarea id="note" name="note" rows="3"></textarea></div>
+          <button type="submit" class="primary" id="placeOrder" style="width:100%;padding:12px">Zahlungspflichtig bestellen</button>
+        </form>
+        <aside class="card">
+          <h2 style="margin-top:0">Deine Bestellung</h2>
+          <div id="checkoutLines"></div>
+          <div class="totals" id="checkoutTotals"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Bestätigung -->
+    <section id="successView" class="hidden">
+      <div class="success card">
+        <div class="big">✅</div>
+        <h1>Vielen Dank für deine Bestellung!</h1>
+        <p>Deine Bestellnummer: <strong id="orderId"></strong></p>
+        <p id="orderSummary" class="hint"></p>
+        <p><button class="primary" id="newOrder">Zurück zum Shop</button></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="top-inner" style="height:auto;padding:24px 16px;flex-wrap:wrap;gap:8px">
+      <span>© KronenWerk · Bohrkronen &amp; Kernbohrtechnik</span>
+      <span class="hint">Alle Preise inkl. 19 % MwSt., zzgl. Versand (6,90 €, ab 150 € kostenlos)</span>
+    </div>
+  </footer>
+
+  <!-- Warenkorb -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <aside class="drawer" id="drawer" aria-label="Warenkorb">
+    <header><h2>Warenkorb</h2><button id="closeCart" aria-label="Schließen">✕</button></header>
+    <div class="body" id="cartLines"></div>
+    <footer>
+      <div class="totals" id="cartTotals"></div>
+      <button class="primary" id="toCheckout" style="width:100%;margin-top:12px;padding:12px">Zur Kasse</button>
+    </footer>
+  </aside>
+
+  <script src="/app.js"></script>
+</body>
+</html>
