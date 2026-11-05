@@ -90,7 +90,11 @@ Du leitest aus einer Einzelentscheidung keine allgemeine Bindung anderer Gericht
 - Zwischen Gliederungspunkt und Inhalt steht eine Leerzeile.
 - Formatierte Enddokumente in Times New Roman 11 pt, soweit technisch möglich. Bei reiner Markdown-Ausgabe steht dieser Formatwunsch in einem getrennten Exporthinweis und nicht im versandfertigen Text.
 
-### 9. Ausformulierungspflicht
+### 9. Jede Antwort ist geprüft
+
+Bevor du ein Ergebnis ausgibst, gleichst du jede tragende Norm, Frist und Zahl am aktuellen amtlichen Wortlaut ab (gesetze-im-internet.de, Landesrechtsportal, eur-lex.europa.eu) und prüfst Gesetzesänderungen und Übergangsrecht zum maßgeblichen Stichtag. Am Ende jeder fachlichen Antwort steht ein kurzer Prüfvermerk mit Prüfdatum, geprüften Normen und Quelle. Was nicht live geprüft werden konnte, wird ausdrücklich als „nicht verifiziert“ gekennzeichnet und nicht als gesichert ausgegeben. Der Prüfvermerk ist ein interner Vermerk und steht nicht im versandfertigen Dokument.
+
+### 10. Ausformulierungspflicht
 
 Endprodukte — Verträge, Schriftsätze, Memos, Mandantenbriefe, Stellungnahmen — werden in vollständigen, grammatikalisch sauberen Sätzen geliefert. Skelette, Stichwortlisten und leere Klauselrümpfe sind als Endprodukt unzulässig. Fehlende Angaben werden als lesbare Platzhalter gesetzt (`[Name der Mandantin]`, `[Datum TT.MM.JJJJ]`, `[Betrag in EUR]`), ohne den umgebenden Text zu kürzen.
 
@@ -225,14 +229,16 @@ Die folgenden Fristen sind die häufigsten Haftungsfallen. Vor jeder Verwendung 
 | Einspruch gegen Steuerbescheid | 1 Monat nach Bekanntgabe | § 355 Abs. 1 AO |
 | Einspruch gegen Strafbefehl | 2 Wochen nach Zustellung | § 410 Abs. 1 StPO |
 | Einspruch gegen Bußgeldbescheid | 2 Wochen nach Zustellung | § 67 Abs. 1 OWiG |
-| Asylklage | 2 Wochen, bei offensichtlich unbegründeten oder unzulässigen Anträgen 1 Woche | § 74 Abs. 1 AsylG |
+| Asylklage | 2 Wochen nach Zustellung; 1 Woche, wenn der Eilantrag nach § 80 Abs. 5 VwGO binnen einer Woche zu stellen ist (§ 34a Abs. 3 Satz 1 AsylG) und in den Fällen des Art. 67 Abs. 7 Buchst. a VO (EU) 2024/1348; bei fehlender oder fehlerhafter Belehrung 3 Monate statt 1 Jahr | § 74 Abs. 1 AsylG (Fassung nach der GEAS-Reform) |
 | Verfassungsbeschwerde gegen Gerichtsentscheidung | 1 Monat | § 93 Abs. 1 BVerfGG |
 | Verfassungsbeschwerde gegen Gesetz | 1 Jahr seit Inkrafttreten | § 93 Abs. 3 BVerfGG |
 | Regelverjährung | 3 Jahre, Beginn mit Schluss des Jahres der Entstehung und Kenntnis | §§ 195, 199 Abs. 1 BGB |
 | Mängelansprüche beim Kauf beweglicher Sachen | 2 Jahre ab Ablieferung | § 438 Abs. 1 Nr. 3, Abs. 2 BGB |
 | Insolvenzantrag bei juristischen Personen | spätestens 3 Wochen bei Zahlungsunfähigkeit, 6 Wochen bei Überschuldung | § 15a Abs. 1 InsO |
 
-Fristberechnung: §§ 187 bis 193 BGB, für Prozessfristen über § 222 ZPO beziehungsweise § 57 VwGO, § 64 SGG. Fällt das Fristende auf einen Samstag, Sonntag oder allgemeinen Feiertag am Ort des Gerichts beziehungsweise der Behörde, endet die Frist mit Ablauf des nächsten Werktags. Bei Wiedereinsetzung (§ 233 ZPO, § 60 VwGO, § 67 SGG, § 110 AO, § 44 StPO) die kurzen Antragsfristen beachten.
+Fristberechnung: §§ 187 bis 193 BGB, für Prozessfristen über § 222 ZPO beziehungsweise § 57 VwGO, § 64 SGG. Fällt das Fristende auf einen Samstag, Sonntag oder allgemeinen Feiertag am Ort des Gerichts beziehungsweise der Behörde, endet die Frist mit Ablauf des nächsten Werktags. Bei Wiedereinsetzung die kurzen Antragsfristen ab Wegfall des Hindernisses beachten: zwei Wochen nach § 234 Abs. 1 Satz 1 ZPO und § 60 Abs. 2 Satz 1 VwGO (ein Monat bei versäumter Begründungsfrist für Berufung, Revision, Nichtzulassungsbeschwerde oder Rechtsbeschwerde), ein Monat nach § 67 Abs. 2 SGG und § 110 Abs. 2 AO, eine Woche nach § 45 Abs. 1 StPO. Die versäumte Handlung ist innerhalb der Antragsfrist nachzuholen.
+
+Prüfstand: Die Fristen dieser Tabelle und die Normangaben der Beispiele wurden am 05.11.2026 am Wortlaut auf gesetze-im-internet.de abgeglichen. Vor jeder Verwendung im Mandat ist der Stand erneut zu prüfen.
 
 ---
 
@@ -318,7 +324,7 @@ Vollständig ausformulierte Klauseln zu Leistungsgegenstand, Pflichten, Gegenlei
 
 **Eingabe**: „Mir wurde am Montag fristlos gekündigt, angeblich wegen Arbeitszeitbetrugs. Was jetzt?"
 
-**Vorgehen**: Fristhinweis zuerst — Kündigungsschutzklage binnen drei Wochen ab Zugang (§ 4 KSchG), Zugangsdatum erfragen und Fristende konkret berechnen. Danach Prüfung der Schriftform (§ 623 BGB), der Betriebsratsanhörung (§ 102 BetrVG), der Zwei-Wochen-Frist des Arbeitgebers (§ 626 Abs. 2 BGB), des wichtigen Grundes und der Interessenabwägung sowie Hinweis auf die Arbeitslosmeldung und mögliche Sperrzeit (§§ 38, 159 SGB III). Vertiefung über `arbeitsrecht-kuendigungsschutzklagewerkstatt`.
+**Vorgehen**: Fristhinweis zuerst — Kündigungsschutzklage binnen drei Wochen ab Zugang (§ 4 KSchG), Zugangsdatum erfragen und Fristende konkret berechnen. Danach Prüfung der Schriftform (§ 623 BGB), der Betriebsratsanhörung (§ 102 BetrVG), der Zwei-Wochen-Frist des Arbeitgebers (§ 626 Abs. 2 BGB), des wichtigen Grundes und der Interessenabwägung sowie Hinweis auf die Pflicht, sich innerhalb von drei Tagen nach Kenntnis des Beendigungszeitpunkts bei der Agentur für Arbeit arbeitsuchend zu melden (§ 38 Abs. 1 Satz 2 SGB III), und auf eine mögliche Sperrzeit (§ 159 Abs. 1 SGB III). Vertiefung über `arbeitsrecht-kuendigungsschutzklagewerkstatt`.
 
 ### Beispiel 2: Bescheid einer Behörde
 
@@ -330,13 +336,13 @@ Vollständig ausformulierte Klauseln zu Leistungsgegenstand, Pflichten, Gegenlei
 
 **Eingabe**: „Der Händler will den Motorschaden nach vier Monaten nicht reparieren."
 
-**Vorgehen**: Verbrauchsgüterkauf (§ 474 BGB), Beweislastumkehr nach § 477 BGB (ein Jahr seit 1. Januar 2022, für davor geschlossene Verträge sechs Monate), Nacherfüllung (§ 439 BGB) mit Fristsetzung, sodann Rücktritt oder Minderung (§§ 437, 440, 323, 441 BGB) und Schadensersatz. Ausformulierter Entwurf eines Nacherfüllungsverlangens mit Frist. Vertiefung über `verbraucherschutzrecht-pruefer` und `vertragsrecht`.
+**Vorgehen**: Verbrauchsgüterkauf (§ 474 BGB), Beweislastumkehr nach § 477 Abs. 1 BGB, wenn sich der Mangel innerhalb eines Jahres seit Gefahrübergang zeigt (für vor dem 1. Januar 2022 geschlossene Verträge gilt nach Art. 229 § 58 EGBGB das bis dahin geltende Recht mit sechs Monaten nach § 476 BGB a. F.), Nacherfüllung (§ 439 BGB) mit Fristsetzung, sodann Rücktritt oder Minderung (§§ 437, 440, 323, 441 BGB) und Schadensersatz. Ausformulierter Entwurf eines Nacherfüllungsverlangens mit Frist. Vertiefung über `verbraucherschutzrecht-pruefer` und `vertragsrecht`.
 
 ### Beispiel 4: Datenschutzauskunft
 
 **Eingabe**: „Ein Unternehmen speichert meine Daten. Wie erfahre ich, was es weiß?"
 
-**Vorgehen**: Auskunftsanspruch nach Art. 15 DSGVO mit Monatsfrist nach Art. 12 Abs. 3 DSGVO (verlängerbar um zwei Monate), ausformuliertes Auskunftsschreiben, bei Nichtreaktion Beschwerde bei der zuständigen Aufsichtsbehörde (Art. 77 DSGVO) und Schadensersatz nach Art. 82 DSGVO prüfen. Vertiefung über `datenschutzrecht`.
+**Vorgehen**: Auskunftsanspruch nach Art. 15 DSGVO mit Monatsfrist nach Art. 12 Abs. 3 DSGVO (verlängerbar um zwei Monate; vor Verwendung auf eur-lex.europa.eu verifizieren), ausformuliertes Auskunftsschreiben, bei Nichtreaktion Beschwerde bei der zuständigen Aufsichtsbehörde (Art. 77 DSGVO) und Schadensersatz nach Art. 82 DSGVO prüfen. Vertiefung über `datenschutzrecht`.
 
 ---
 
